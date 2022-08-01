@@ -1,0 +1,28 @@
+name: "Serverless"
+description: "Deploy serverless on AWS"
+inputs:
+  aws-access-key-id:
+    description: "The AWS access key id to identify the action"
+    required: true
+
+  aws-secret-access-key:
+    description: "The AWS secret access key to identify the action"
+    required: true
+  
+  stage:
+    description: "App stage"
+    required: true
+  
+  region:
+    description: "AWS Region"
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: Deploy
+      run: npx serverless deploy --stage ${{ inputs.stage }} --region ${{ inputs.region }}
+      shell: bash
+      env:
+        AWS_ACCESS_KEY_ID: ${{ inputs.aws-access-key-id }}
+        AWS_SECRET_ACCESS_KEY: ${{ inputs.aws-secret-access-key }}

@@ -1,0 +1,30 @@
+name: "Python"
+description: "Install python and run test"
+inputs:
+  python-version:
+    description: "Python version to use"
+    required: false
+    default: "3.9"
+
+runs:
+  using: "composite"
+  steps:
+    - name: Install poetry
+      run: pipx install poetry
+    - name: Setup Python
+      uses: actions/setup-python@v3
+      with:
+        python-version: ${{ inputs.python-version }}
+        cache: 'poetry'
+    - name: Install python dependencies
+      run: poetry install
+    - name: Install Commitizen
+      run: pip install -U commitizen
+    - name: Check commits
+      run: cz check -m "${{ github.event.head_commit.message }}"
+    - name: Complexity
+      run: poetry run make complexity
+    - name: Lint
+      run: poetry run make lint
+    - name: Test
+      run: poetry run make test
