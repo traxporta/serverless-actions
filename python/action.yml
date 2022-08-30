@@ -7,7 +7,7 @@ inputs:
     default: "3.9"
   github-access-token:
     description: "A Github Access Token to download private dependencies"
-    required: false
+    required: true
 
 runs:
   using: "composite"
@@ -20,7 +20,7 @@ runs:
       with:
         python-version: ${{ inputs.python-version }}
         cache: 'poetry'
-    - run: git config --global url."https://${{ inputs.github-access-token }}@github.com/".insteadOf ssh://git@github.com/
+    - run: git config --global url."https://tec-traxporta:${{ inputs.github-access-token }}@github.com/".insteadOf ssh://git@github.com/
       shell: bash
     - name: Install python dependencies
       run: poetry install
