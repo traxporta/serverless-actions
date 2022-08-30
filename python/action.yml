@@ -20,7 +20,10 @@ runs:
       with:
         python-version: ${{ inputs.python-version }}
         cache: 'poetry'
-    - run: git config --global url."https://tec-traxporta:${{ inputs.github-access-token }}@github.com/".insteadOf ssh://git@github.com/
+    - name: Setup Github access token
+      env:
+        ACCESS_TOKEN: ${{ inputs.github-access-token }}
+      run: ${{ github.action_path }}/../common/git-setup.sh
       shell: bash
     - name: Install python dependencies
       run: poetry install
