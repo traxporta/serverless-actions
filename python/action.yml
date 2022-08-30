@@ -29,9 +29,9 @@ runs:
     - name: Complexity
       run: poetry run make complexity
       shell: bash
-    - name: Lint
-      run: poetry run make lint
-      shell: bash
+    # - name: Lint
+    #   run: poetry run make lint
+    #   shell: bash
     - name: Test
       run: poetry run make test
       shell: bash
