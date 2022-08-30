@@ -1,5 +1,3 @@
-#!/bin/bash -ex
-
 git config credential.helper store
 
 echo -e "https://tec-traxporta:$ACCESS_TOKEN@github.com" | sudo tee -a /etc/git-credentials
