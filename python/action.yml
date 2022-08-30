@@ -23,7 +23,7 @@ runs:
     - name: Setup Github access token
       env:
         ACCESS_TOKEN: ${{ inputs.github-access-token }}
-      run: ./scripts/git-setup.sh
+      run: ${{ github.action_path }}/../scripts/git-setup.sh
       shell: bash
     - name: Install python dependencies
       run: poetry install
