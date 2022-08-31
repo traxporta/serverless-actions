@@ -27,7 +27,7 @@ runs:
       shell: bash
     - name: Activate venv
       run: poetry shell
-      shell: bash      
+      shell: bash
     - name: Install python dependencies
       run: poetry install
       shell: bash
