@@ -5,9 +5,6 @@ inputs:
     description: "Python version to use"
     required: false
     default: "3.9"
-  github-access-token:
-    description: "A Github Access Token to download private dependencies"
-    required: true
 
 runs:
   using: "composite"
@@ -32,9 +29,9 @@ runs:
     - name: Complexity
       run: poetry run make complexity
       shell: bash
-    # - name: Lint
-    #   run: poetry run make lint
-    #   shell: bash
+    - name: Lint
+      run: poetry run make lint
+      shell: bash
     - name: Test
       run: poetry run make test
       shell: bash
