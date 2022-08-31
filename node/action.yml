@@ -24,3 +24,5 @@ runs:
     - name: Install node dependencies
       run: npm ci
       shell: bash
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
