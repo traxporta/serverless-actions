@@ -25,6 +25,9 @@ runs:
         ACCESS_TOKEN: ${{ inputs.github-access-token }}
       run: ${{ github.action_path }}/../scripts/git-setup.sh
       shell: bash
+    - name: Activate venv
+      run: poetry shell
+      shell: bash      
     - name: Install python dependencies
       run: poetry install
       shell: bash
