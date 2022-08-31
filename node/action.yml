@@ -5,8 +5,6 @@ inputs:
     description: "Node version to use"
     required: false
     default: "16"
-  ssh-private-key:
-    required: false
 
 runs:
   using: "composite"
@@ -23,10 +21,6 @@ runs:
         key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
         restore-keys: |
           ${{ runner.os }}-npm-
-    - name: Configure SSH Private key for installation repositories
-        uses: webfactory/ssh-agent@v0.4.1
-        with:
-          ssh-private-key: ${{ inputs.ssh-private-key }}
     - name: Install node dependencies
       run: npm ci
       shell: bash

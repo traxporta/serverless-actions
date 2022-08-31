@@ -20,11 +20,6 @@ runs:
     - name: Install poetry
       run: curl -sSL https://install.python-poetry.org | python3 -
       shell: bash
-    - name: Setup Github access token
-      env:
-        ACCESS_TOKEN: ${{ inputs.github-access-token }}
-      run: ${{ github.action_path }}/../scripts/git-setup.sh
-      shell: bash
     - name: Install python dependencies
       run: poetry install
       shell: bash
