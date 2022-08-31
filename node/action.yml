@@ -5,9 +5,6 @@ inputs:
     description: "Node version to use"
     required: false
     default: "16"
-  github-access-token:
-    description: "A Github Access Token to download private dependencies"
-    required: false
 
 runs:
   using: "composite"
@@ -27,5 +24,3 @@ runs:
     - name: Install node dependencies
       run: npm ci
       shell: bash
-      env:
-        NODE_AUTH_TOKEN: ${{ inputs.github-access-token }}
