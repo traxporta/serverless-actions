@@ -26,5 +26,5 @@ runs:
       run: poetry run make lint
       shell: bash
     - name: Test
-      run: poetry run make test --cov-fail-under=80 --cov=src tests
+      run: poetry run make test
       shell: bash
